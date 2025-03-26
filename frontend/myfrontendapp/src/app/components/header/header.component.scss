@@ -1,0 +1,107 @@
+// Estilos personalizados para el header
+.nav-link.active {
+  font-weight: bold;
+  color: white !important;
+  background-color: #007bff; /* Azul Bootstrap */
+  border-radius: 5px;
+}
+
+// Estilo general del navbar
+.navbar {
+  background-color: #007bff;  // Fondo azul brillante
+  padding: 1rem 2rem;  // Espaciado a los lados y arriba/abajo
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);  // Sombra sutil
+  border-radius: 0 0 10px 10px;  // Bordes redondeados en la parte inferior
+
+  .navbar-brand {
+    font-size: 1.75rem;
+    font-weight: bold;
+    color: #fff !important;
+    letter-spacing: 1px;  // Espaciado entre letras
+    text-transform: uppercase;
+
+    &:hover {
+      color: #f8f9fa !important;
+      text-decoration: underline;
+    }
+  }
+
+  .navbar-toggler {
+    border: none;
+    background-color: transparent;
+
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='white' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+      background-size: contain;
+      background-repeat: no-repeat;
+      width: 30px;
+      height: 30px;
+    }
+  }
+
+  .navbar-nav {
+    margin-left: auto;  // Alinea los enlaces a la derecha
+    font-size: 1.1rem;
+  }
+
+  .navbar-nav .nav-item {
+    margin-left: 1.5rem;  // Espacio entre los elementos
+  }
+
+  .navbar-nav .nav-item .nav-link {
+    color: #fff;
+    font-weight: 500;
+    padding: 0.75rem 1.5rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+
+    &:hover {
+      color: #007bff;
+      background-color: rgba(255, 255, 255, 0.2);  // Fondo sutil al pasar el ratón
+      border-radius: 0.25rem;
+    }
+
+    &.text-danger {
+      color: #f44336;
+      font-weight: 600;
+    }
+  }
+}
+
+// Estilo para la versión mobile
+@media (max-width: 767px) {
+.navbar-collapse {
+  text-align: center;
+  background-color: #007bff;  // Fondo azul en el menú desplegable
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+.navbar-nav {
+  margin-top: 1rem;
+}
+
+.navbar-nav .nav-item {
+  margin: 0.5rem 0;
+}
+
+.navbar-nav .nav-item .nav-link {
+  font-size: 1.2rem;
+  padding: 1rem;
+}
+
+.nav-link.active {
+  background-color: rgba(255, 255, 255, 0.2); /* Sombreado ligero */
+  border-radius: 8px; /* Bordes redondeados */
+  padding: 10px; /* Espaciado para mejor visibilidad */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Sombra */
+}
+
+// Ajustes para asegurarse de que el navbar-toggler y el contenido sean accesibles
+.navbar-toggler {
+  z-index: 999;  // Asegura que el botón de menú esté por encima de otros elementos
+}
+
+.navbar-nav {
+  font-size: 1rem;  // Ajuste el tamaño de la fuente para mayor legibilidad
+}
+}

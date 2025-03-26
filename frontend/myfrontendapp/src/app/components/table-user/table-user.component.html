@@ -1,0 +1,179 @@
+<div class="d-flex justify-content-between align-items-center mb-2">
+    <h5 class="m-0">User List</h5>
+    <input type="text" class="form-control w-25" placeholder="Search..." [(ngModel)]="searchTerm" (input)="filterUsers()" />
+    <button class="btn btn-primary btn-sm" data-bs-toggle="modal" (click)="openAddModal()">
+        Add User
+    </button>
+</div>
+
+<table class="table table-striped table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Role</th>
+            <th scope="col" class="text-end">Actions</th>
+        </tr>
+    </thead>
+    <tbody class="table-group-divider">
+        <tr *ngFor="let user of filteredData; let i = index">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>{{ user.name }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.role }}</td>
+            <td class="text-end">
+                <button class="btn btn-info btn-sm" (click)="openShowModal(user)" data-bs-toggle="modal"
+                    data-bs-target="#showModal">Show</button>
+                <button class="btn btn-warning btn-sm ms-1" (click)="openEditModal(user)" data-bs-toggle="modal"
+                    data-bs-target="#editModal">Edit</button>
+                <button class="btn btn-danger btn-sm ms-1" (click)="openDeleteModal(user)" data-bs-toggle="modal"
+                    data-bs-target="#deleteModal">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<!-- Modal para mostrar usuario -->
+<div class="modal fade" id="showModal" tabindex="-1" aria-labelledby="showModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editModalLabel">Show User</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form *ngIf="selectedUser">
+                    <div class="mb-3">
+                        <label class="form-label">Name</label>
+                        <input type="text" class="form-control" [(ngModel)]="selectedUser.name" name="name" disabled="true">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-control" [(ngModel)]="selectedUser.email" name="email" disabled="true">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Password</label>
+                        <input type="text" class="form-control" [(ngModel)]="selectedUser.password" name="password" disabled="true">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Role</label>
+                        <input type="text" class="form-control" [(ngModel)]="selectedUser.role" name="role" disabled="true">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal para editar usuario -->
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editModalLabel">Edit User</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form *ngIf="selectedUser">
+                    <div class="mb-3">
+                        <label class="form-label">Name</label>
+                        <input type="text" class="form-control" [(ngModel)]="selectedUser.name" name="name">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-control" [(ngModel)]="selectedUser.email" name="email">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Password</label>
+                        <input type="text" class="form-control" [(ngModel)]="selectedUser.password" name="password">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Role</label>
+                        <select class="form-control" [(ngModel)]="selectedUser.role" name="role">
+                            <option value="admin">Admin</option>
+                            <option value="user">User</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                &nbsp;
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="saveChanges()">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal para borrado usuario -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editModalLabel">Delete User</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form *ngIf="selectedUser">
+                    <div class="mb-3">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-control" [(ngModel)]="selectedUser.email" name="email" disabled="true">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Role</label>
+                        <input type="text" class="form-control" [(ngModel)]="selectedUser.role" name="role" disabled="true">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                &nbsp;
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="deleteUser()">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal para agregar usuario -->
+<div class="modal fade" id="addUserModal" tabindex="-1" aria-labelledby="addUserModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addUserModalLabel">Add User</h5>
+                <button type="button" class="btn-close" (click)="closeAddModal()" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form #userForm="ngForm">
+                    <div class="mb-3">
+                        <label class="form-label">Name</label>
+                        <input type="text" class="form-control" [(ngModel)]="newUser.name" name="name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-control" [(ngModel)]="newUser.email" name="email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Password</label>
+                        <input type="password" class="form-control" [(ngModel)]="newUser.password" name="password" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Role</label>
+                        <select class="form-control" [(ngModel)]="newUser.role" name="role" required>
+                            <option value="admin">Admin</option>
+                            <option value="user">User</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="closeAddModal()">Cancel</button>
+                <button type="button" class="btn btn-primary"   (click)="addUser()">Add User</button>
+            </div>
+            <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+            <div *ngIf="sucessMessage" class="alert alert-sucess">{{ sucessMessage }}</div>
+        </div>
+    </div>
+</div>

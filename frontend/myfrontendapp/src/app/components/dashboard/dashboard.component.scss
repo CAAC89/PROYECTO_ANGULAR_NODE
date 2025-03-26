@@ -1,0 +1,16 @@
+.welcome-container {
+    margin-top: 20px;
+    text-align: center;
+  
+    img {
+      max-width: 100%;  /* Asegura que la imagen sea responsiva */
+      height: auto;
+      margin-bottom: 15px; /* Espacio entre la imagen y el título */
+    }
+  
+    h1 {
+      font-size: 2rem;
+      color: #343a40; /* Color gris oscuro */
+      font-weight: bold;
+    }
+}
