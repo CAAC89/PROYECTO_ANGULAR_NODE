@@ -14,8 +14,6 @@
             <th scope="col">Status</th>
             <th scope="col">Description</th>
             <th scope="col">AssignedUser</th>
-            <th scope="col">CreatedAt</th>
-            <th scope="col">UpdatedAt</th>
             <th scope="col" class="text-end">Actions</th>
         </tr>
     </thead>
@@ -26,8 +24,6 @@
             <td>{{ ticket.status }}</td>
             <td>{{ ticket.description }}</td>
             <td>{{ ticket.assignedUser }}</td>
-            <td>{{ ticket.createdAt }}</td>
-            <td>{{ ticket.updatedAt }}</td>
             <td class="text-end">
                 <button class="btn btn-info btn-sm" (click)="openShowModal(ticket)" data-bs-toggle="modal"
                     data-bs-target="#showModal">Show</button>

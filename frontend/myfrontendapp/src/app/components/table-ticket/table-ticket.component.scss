@@ -12,3 +12,51 @@
             text-align: center !important;
         }
 }
+
+/* Estilos generales para el modal */
+.modal-dialog {
+    max-width: 80%; /* Aumenta el tamaño del modal en pantallas más pequeñas */
+}
+
+/* Media Query para pantallas pequeñas (móviles) */
+@media (max-width: 767px) {
+    .modal-dialog {
+        max-width: 100%; /* En pantallas más pequeñas, el modal ocupará el 100% del ancho */
+        margin: 0; /* Elimina márgenes */
+    }
+
+    .modal-content {
+        padding: 10px; /* Añade algo de relleno dentro del modal */
+    }
+
+    .modal-header {
+        text-align: center; /* Centra el encabezado */
+    }
+
+    .form-label {
+        font-size: 14px; /* Reduce el tamaño de la fuente de las etiquetas */
+    }
+
+    .form-control {
+        font-size: 14px; /* Ajusta el tamaño del texto en los campos de formulario */
+    }
+
+    .modal-footer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .modal-footer button {
+        width: 100%; /* Hace que los botones ocupen todo el ancho en pantallas pequeñas */
+        margin-top: 10px; /* Añade un margen entre los botones */
+    }
+}
+
+/* Media Query para pantallas más grandes */
+@media (min-width: 768px) {
+    .modal-dialog {
+        max-width: 50%; /* En pantallas grandes, se mantiene el tamaño original */
+    }
+}
