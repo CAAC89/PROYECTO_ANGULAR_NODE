@@ -4,6 +4,7 @@ import { UserService } from '../../services/user/user.service';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 //INTERFACE USER USED
 interface User {
@@ -16,7 +17,7 @@ interface User {
 
 @Component({
   selector: 'app-table-user',
-  imports: [FormsModule, CommonModule, RouterModule],
+  imports: [FormsModule, CommonModule, RouterModule, NgxPaginationModule],
   templateUrl: './table-user.component.html',
   styleUrl: './table-user.component.scss'
 })
@@ -32,6 +33,10 @@ export class TableUserComponent {
   filteredData = [...this.data];
   searchTerm: string = '';
   sortColumn: string = '';
+
+  // PAGINACIÓN
+  currentPage: number = 1; // Página actual
+  itemsPerPage: number = 10; // Elementos por página
 
 
   //CONTRUCTOR--------------------------------

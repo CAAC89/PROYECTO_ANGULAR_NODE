@@ -17,7 +17,7 @@
         </tr>
     </thead>
     <tbody class="table-group-divider">
-        <tr *ngFor="let user of filteredData; let i = index">
+        <tr *ngFor="let user of (filteredData | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }); let i = index">
             <th scope="row">{{ i + 1 }}</th>
             <td>{{ user.name }}</td>
             <td>{{ user.email }}</td>
@@ -33,6 +33,7 @@
         </tr>
     </tbody>
 </table>
+<pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
 
 <!-- Modal para mostrar usuario -->
 <div class="modal fade" id="showModal" tabindex="-1" aria-labelledby="showModalLabel" aria-hidden="true">
