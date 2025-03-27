@@ -47,11 +47,9 @@ usuario administrador con las siguientes credenciales
 
 
 COSAS POR MEJORAR
-1) Realizar paginado en las tablas
-2) Mejorar mediaQuerys
-3) Mejorar algunos textos de errores
-4) Algunas validaciones 
-5) Si hay errores que se muestran en consola eso es algo por mejorar
+1) Mejorar algunos textos de errores , esto no es tan importante para este caso
+2) Algunas validaciones si fuera el caso
+3) Si hay errores que se muestran en consola eso es algo por mejorar
 
 
 --------------ENGLISH-----------------
@@ -92,8 +90,6 @@ user (Manages tickets)
 5) The system supports add, edit, delete, show, and basic filtering operations.
 
 AREAS FOR IMPROVEMENT
-1) Implement pagination in tables.
-2) Improve media queries.
-3) Enhance some error messages.
-4) Add more validations.
-5) Fix console errors if they appear.
+1) Enhance some error messages.
+2) Add more validations.
+3) Fix console errors if they appear.
