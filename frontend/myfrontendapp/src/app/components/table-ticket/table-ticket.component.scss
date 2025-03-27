@@ -1,0 +1,14 @@
+
+@media (max-width: 768px) {
+        .table-responsive {
+            overflow-x: auto;
+        }
+        .btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        .text-md-end {
+            text-align: center !important;
+        }
+}
