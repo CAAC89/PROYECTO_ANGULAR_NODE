@@ -20,7 +20,7 @@
         </tr>
     </thead>
     <tbody class="table-group-divider">
-        <tr *ngFor="let ticket of filteredData; let i = index">
+        <tr *ngFor="let ticket of (filteredData | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }); let i = index">
             <th scope="row">{{ i + 1 }}</th>
             <td>{{ ticket.title }}</td>
             <td>{{ ticket.status }}</td>
@@ -39,6 +39,7 @@
         </tr>
     </tbody>
 </table>
+<pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
 
 <!-- Modal para agregar ticket -->
 <div class="modal fade" id="addTicketModal" tabindex="-1" aria-labelledby="addTicketModalLabel" aria-hidden="true">

@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { TicketService } from '../../services/ticket/ticket.service';
 import { AuthService } from '../../services/auth/auth.service';
 import { UserService } from '../../services/user/user.service';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 //INTERFACE TICKET USED
 interface Ticket {
@@ -19,7 +20,7 @@ interface Ticket {
 
 @Component({
   selector: 'app-table-ticket',
-  imports: [FormsModule, CommonModule, RouterModule],
+  imports: [FormsModule, CommonModule, RouterModule, NgxPaginationModule],
   templateUrl: './table-ticket.component.html',
   styleUrl: './table-ticket.component.scss'
 })
@@ -34,6 +35,10 @@ export class TableTicketComponent {
   filteredData = [...this.data];
   searchTerm: string = '';
   sortColumn: string = '';
+
+  // PAGINACIÓN
+  currentPage: number = 1; // Página actual
+  itemsPerPage: number = 10; // Elementos por página
 
   //CONTRUCTOR--------------------------------
   constructor(private authService: AuthService, private userService: UserService, private ticketService: TicketService, private el: ElementRef) { }
