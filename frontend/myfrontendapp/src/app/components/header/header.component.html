@@ -7,11 +7,11 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
+                <li class="nav-item" *ngIf="status === 1" >
                     <a class="nav-link" *ngIf="statusRoute === 1"  routerLink="/dashboard/user" routerLinkActive="active">User</a>
                     <a class="nav-link" *ngIf="statusRoute !== 1" routerLink="/dashboard/user">User</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" *ngIf="status === 1 || status===2" >
                     <a class="nav-link" *ngIf="statusRoute === 2"  routerLink="/dashboard/ticket" routerLinkActive="active">Ticket</a>
                     <a class="nav-link" *ngIf="statusRoute !==2" routerLink="/dashboard/ticket">Ticket</a>
                 </li>
